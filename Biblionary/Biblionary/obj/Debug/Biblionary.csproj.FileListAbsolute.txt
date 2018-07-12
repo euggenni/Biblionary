@@ -1,2 +1,9 @@
 c:\users\1\documents\visual studio 2012\Projects\Biblionary\Biblionary\bin\Debug\Biblionary.exe.config
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.exe.config
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Bibli.mdf
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Bibli_log.ldf
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.exe
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\obj\Debug\Biblionary.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\obj\Debug\Biblionary.exe
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\obj\Debug\Biblionary.pdb
