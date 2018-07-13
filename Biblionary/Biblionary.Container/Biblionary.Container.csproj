@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE378A0A-B963-4C61-915D-C50A108472BB}</ProjectGuid>
+    <ProjectGuid>{34F2611B-8185-457F-AA2F-740EC40DF481}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Biblionary.BLL</RootNamespace>
-    <AssemblyName>Biblionary.BLL</AssemblyName>
+    <RootNamespace>Biblionary.Container</RootNamespace>
+    <AssemblyName>Biblionary.Container</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,24 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookLogic.cs" />
-    <Compile Include="CommentLogic.cs" />
-    <Compile Include="GenreLogic.cs" />
+    <Compile Include="BookContainer.cs" />
+    <Compile Include="CommentContainer.cs" />
+    <Compile Include="GenreContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserLogic.cs" />
+    <Compile Include="UserContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Biblionary.BLL.Interface\Biblionary.BLL.Interface.csproj">
       <Project>{8b590d3d-de6b-477a-8193-7abf9200c72a}</Project>
       <Name>Biblionary.BLL.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Biblionary.BLL\Biblionary.BLL.csproj">
+      <Project>{ce378a0a-b963-4c61-915d-c50a108472bb}</Project>
+      <Name>Biblionary.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Biblionary.DAL.Interface\Biblionary.DAL.Interface.csproj">
       <Project>{98d2ee86-425d-463f-8208-b71f88c53891}</Project>
       <Name>Biblionary.DAL.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Biblionary.Entities\Biblionary.Entities.csproj">
-      <Project>{7780241c-6ddf-4c51-ab92-4b67fea770d3}</Project>
-      <Name>Biblionary.Entities</Name>
+    <ProjectReference Include="..\Biblionary.DAL\Biblionary.DAL.csproj">
+      <Project>{5eb8610e-ce66-4034-8c68-ab0b1d9a1311}</Project>
+      <Name>Biblionary.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

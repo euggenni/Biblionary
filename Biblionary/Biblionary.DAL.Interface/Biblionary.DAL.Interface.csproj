@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBiblionaryDao.cs" />
+    <Compile Include="IBiblionaryBookDao.cs" />
+    <Compile Include="IBiblionaryCommentDao.cs" />
+    <Compile Include="IBiblionaryGenreDao.cs" />
+    <Compile Include="IBiblionaryUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
