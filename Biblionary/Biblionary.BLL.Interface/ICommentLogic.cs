@@ -9,7 +9,7 @@ namespace Biblionary.BLL.Interface
 {
     public interface ICommentLogic
     {
-        void AddComment(Comment comment);
+        int AddComment(Comment comment);
 
         IEnumerable<Comment> ReadComments(int id);
     }

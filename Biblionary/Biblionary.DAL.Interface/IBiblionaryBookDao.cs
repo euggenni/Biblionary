@@ -9,7 +9,7 @@ namespace Biblionary.DAL.Interface
 {
     public interface IBiblionaryBookDao
     {
-        void AddBook(Book book);
+        int AddBook(Book book);
 
         void DeleteBook(int id);
 

@@ -9,7 +9,7 @@ namespace Biblionary.DAL.Interface
 {
     public interface IBiblionaryGenreDao
     {
-        void AddGenre(Genre genre);
+        int AddGenre(Genre genre);
 
         void DeleteGenre(int id);
 

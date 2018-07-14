@@ -9,7 +9,7 @@ namespace Biblionary.BLL.Interface
 {
     public interface IBookLogic
     {
-        void AddBook(Book book);
+        int AddBook(Book book);
 
         void DeleteBook(int id);
 

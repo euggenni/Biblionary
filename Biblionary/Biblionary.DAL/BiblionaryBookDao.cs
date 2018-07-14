@@ -25,27 +25,35 @@ namespace Biblionary.DAL
         
         #region Члены IBiblionaryBookDao
 
-        public void AddBook(Book book)
+        public int AddBook(Book book)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "AddBook";
+                try
+                {
+                    var command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "AddBook";
 
-                var title = new SqlParameter("@title", SqlDbType.VarChar) {Value = book.Title};
-                command.Parameters.Add(title);
-                var author = new SqlParameter("@author", SqlDbType.VarChar) {Value = book.Author};
-                command.Parameters.Add(author);
-                var genre = new SqlParameter("@genre", SqlDbType.VarChar) {Value = book.Genre};
-                command.Parameters.Add(genre);
-                var description = new SqlParameter("@description", SqlDbType.VarChar) {Value = book.Description};
-                command.Parameters.Add(description);
-                var compiler = new SqlParameter("@compiler", SqlDbType.VarChar) {Value = book.Compiler};
-                command.Parameters.Add(compiler);
+                    var title = new SqlParameter("@title", SqlDbType.VarChar) {Value = book.Title};
+                    command.Parameters.Add(title);
+                    var author = new SqlParameter("@author", SqlDbType.VarChar) {Value = book.Author};
+                    command.Parameters.Add(author);
+                    var genre = new SqlParameter("@genre", SqlDbType.VarChar) {Value = book.Genre};
+                    command.Parameters.Add(genre);
+                    var description = new SqlParameter("@description", SqlDbType.VarChar) {Value = book.Description};
+                    command.Parameters.Add(description);
+                    var compiler = new SqlParameter("@compiler", SqlDbType.VarChar) {Value = book.Compiler};
+                    command.Parameters.Add(compiler);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    return (int)(decimal)command.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -53,6 +61,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "DeleteBookFromID";
@@ -62,6 +72,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -69,6 +85,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "DeleteBookFromTitle";
@@ -78,6 +96,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -85,6 +109,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "GetAvgNote";
@@ -94,6 +120,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 return (float)command.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -101,6 +133,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadBookFromID";
@@ -122,6 +156,12 @@ namespace Biblionary.DAL
                     Compiler = (string) reader["Login"],
                     DateAdd = ((DateTime) reader["Date_add"]).ToString(),
                 };
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -129,6 +169,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadBooks";
@@ -149,6 +191,12 @@ namespace Biblionary.DAL
                         DateAdd = ((DateTime)reader["Date_add"]).ToString(),
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -156,6 +204,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "SearchBooksFromAuthor";
@@ -179,6 +229,12 @@ namespace Biblionary.DAL
                         DateAdd = ((DateTime)reader["Date_add"]).ToString(),
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -186,6 +242,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "SearchBooksFromGenre";
@@ -209,6 +267,12 @@ namespace Biblionary.DAL
                         DateAdd = ((DateTime)reader["Date_add"]).ToString(),
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -216,6 +280,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "SearchBooksFromTitle";
@@ -239,6 +305,12 @@ namespace Biblionary.DAL
                         DateAdd = ((DateTime)reader["Date_add"]).ToString(),
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -246,6 +318,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateBookFromID";
@@ -264,6 +338,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -271,6 +351,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateBookFromTitle";
@@ -289,6 +371,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 

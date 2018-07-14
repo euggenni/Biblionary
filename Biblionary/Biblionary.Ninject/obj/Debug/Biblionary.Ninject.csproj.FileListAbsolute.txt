@@ -1,0 +1,17 @@
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.Ninject.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.Ninject.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.BLL.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.BLL.Interface.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.DAL.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.DAL.Interface.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Ninject.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.Entities.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.BLL.Interface.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.BLL.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.DAL.Interface.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.DAL.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Ninject.xml
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\Biblionary.Entities.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.pdb

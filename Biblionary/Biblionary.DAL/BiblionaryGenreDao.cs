@@ -25,19 +25,27 @@ namespace Biblionary.DAL
         
         #region Члены IBiblionaryGenreDao
 
-        public void AddGenre(Genre genre)
+        public int AddGenre(Genre genre)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "AddGenre";
+                try
+                {
+                    var command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "AddGenre";
 
-                var name = new SqlParameter("@name", SqlDbType.VarChar) { Value = genre.Name };
-                command.Parameters.Add(name);
+                    var name = new SqlParameter("@name", SqlDbType.VarChar) {Value = genre.Name};
+                    command.Parameters.Add(name);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    return (int)(decimal)command.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -45,6 +53,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "DeleteGenreFromID";
@@ -54,6 +64,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -61,6 +77,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "DeleteGenreFromName";
@@ -70,6 +88,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -77,6 +101,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadGenres";
@@ -92,6 +118,12 @@ namespace Biblionary.DAL
                         Name = (string)reader["Name"],
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -99,6 +131,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateGenreFromID";
@@ -110,6 +144,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -117,6 +157,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateGenreFromName";
@@ -128,6 +170,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 

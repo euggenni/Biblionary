@@ -24,9 +24,9 @@ namespace Biblionary.BLL
 
         #region Methods
 
-        public void AddComment(Comment comment)
+        public int AddComment(Comment comment)
         {
-            _commentDao.AddComment(comment);
+            return _commentDao.AddComment(comment);
         }
 
         public IEnumerable<Comment> ReadComments(int id)

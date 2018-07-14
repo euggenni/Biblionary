@@ -29,17 +29,25 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Authorization";
+                try
+                {
+                    var command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "Authorization";
 
-                var login = new SqlParameter("@login", SqlDbType.VarChar) { Value = user.Login };
-                command.Parameters.Add(login);
-                var password = new SqlParameter("@password", SqlDbType.VarChar) { Value = user.Password };
-                command.Parameters.Add(password);
+                    var login = new SqlParameter("@login", SqlDbType.VarChar) {Value = user.Login};
+                    command.Parameters.Add(login);
+                    var password = new SqlParameter("@password", SqlDbType.VarChar) {Value = user.Password};
+                    command.Parameters.Add(password);
 
-                connection.Open();
-                return (int) (decimal) command.ExecuteScalar();
+                    connection.Open();
+                    return (int) (decimal) command.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -47,6 +55,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadUserFromID";
@@ -68,6 +78,12 @@ namespace Biblionary.DAL
                     CanComment = (bool)reader["Can_comment"],
                     CanRead = (bool)reader["Can_read"],
                 };
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -75,6 +91,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadUserFromLogin";
@@ -96,6 +114,12 @@ namespace Biblionary.DAL
                     CanComment = (bool)reader["Can_comment"],
                     CanRead = (bool)reader["Can_read"],
                 };
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -103,6 +127,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ReadUsers";
@@ -123,13 +149,21 @@ namespace Biblionary.DAL
                         CanRead = (bool) reader["Can_read"],
                     };
                 }
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
-        public void Registration(User user)
+        public int Registration(User user)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "Registration";
@@ -140,7 +174,13 @@ namespace Biblionary.DAL
                 command.Parameters.Add(password);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                return (int)(decimal)command.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -148,6 +188,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdatePassword";
@@ -159,6 +201,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -166,6 +214,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateRightsUserFromID";
@@ -181,6 +231,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 
@@ -188,6 +244,8 @@ namespace Biblionary.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
+                try
+                {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "UpdateRightsUserFromLogin";
@@ -203,6 +261,12 @@ namespace Biblionary.DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 

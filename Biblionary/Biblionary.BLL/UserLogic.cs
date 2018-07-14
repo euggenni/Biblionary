@@ -43,9 +43,9 @@ namespace Biblionary.BLL
             return _userDao.ReadUsers();
         }
 
-        public void Registration(User user)
+        public int Registration(User user)
         {
-            _userDao.Registration(user);
+            return _userDao.Registration(user);
         }
 
         public void UpdatePassword(string login, string password)

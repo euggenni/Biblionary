@@ -19,3 +19,7 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionar
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.DAL.Interface.pdb
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.DAL.pdb
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.BLL.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.Ninject.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Ninject.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.Ninject.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Ninject.xml

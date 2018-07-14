@@ -17,7 +17,7 @@ namespace Biblionary.DAL.Interface
 
         IEnumerable<User> ReadUsers();
 
-        void Registration(User user);
+        int Registration(User user);
 
         void UpdatePassword(string login, string password);
 

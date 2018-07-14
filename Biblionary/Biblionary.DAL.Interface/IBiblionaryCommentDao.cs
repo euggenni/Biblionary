@@ -9,7 +9,7 @@ namespace Biblionary.DAL.Interface
 {
     public interface IBiblionaryCommentDao
     {
-        void AddComment(Comment comment);
+        int AddComment(Comment comment);
 
         IEnumerable<Comment> ReadComments(int id);
     }

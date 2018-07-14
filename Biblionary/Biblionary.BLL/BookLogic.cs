@@ -25,9 +25,9 @@ namespace Biblionary.BLL
 
         #region Methods
 
-        public void AddBook(Book book)
+        public int AddBook(Book book)
         {
-            _bookDao.AddBook(book);
+            return _bookDao.AddBook(book);
         }
 
         public void DeleteBook(int id)

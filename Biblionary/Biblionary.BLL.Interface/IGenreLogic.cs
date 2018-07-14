@@ -9,7 +9,7 @@ namespace Biblionary.BLL.Interface
 {
     public interface IGenreLogic
     {
-        void AddGenre(Genre genre);
+        int AddGenre(Genre genre);
 
         void DeleteGenre(int id);
 

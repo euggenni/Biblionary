@@ -23,9 +23,9 @@ namespace Biblionary.BLL
         
         #region Methods
 
-        public void AddGenre(Genre genre)
+        public int AddGenre(Genre genre)
         {
-            _genreDao.AddGenre(genre);
+            return _genreDao.AddGenre(genre);
         }
 
         public void DeleteGenre(int id)
