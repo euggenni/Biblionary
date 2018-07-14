@@ -51,22 +51,78 @@ namespace Biblionary.DAL
 
         public void DeleteBook(int id)
         {
-            
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "DeleteBookFromID";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) {Value = id};
+                command.Parameters.Add(idBook);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void DeleteBook(string title)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "DeleteBookFromTitle";
+
+                var titl = new SqlParameter("@title", SqlDbType.VarChar) {Value = title};
+                command.Parameters.Add(titl);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public float GetAvgNote(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "GetAvgNote";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) {Value = id};
+                command.Parameters.Add(idBook);
+
+                connection.Open();
+                return (float)command.ExecuteScalar();
+            }
         }
 
         public Book ReadBookFromid(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadBookFromID";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) {Value = id};
+                command.Parameters.Add(idBook);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                reader.Read();
+                return new Book
+                {
+                    IdBook = (int) reader["ID_book"],
+                    Title = (string) reader["Title"],
+                    Author = (string) reader["Author"],
+                    Genre = (string) reader["Genre"],
+                    Description = (string) reader["Description"],
+                    Compiler = (string) reader["Login"],
+                    DateAdd = ((DateTime) reader["Date_add"]).ToString(),
+                };
+            }
         }
 
         public IEnumerable<Book> ReadBooks()
@@ -98,27 +154,142 @@ namespace Biblionary.DAL
 
         public IEnumerable<Book> SearchBooksFromAuthor(string author)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "SearchBooksFromAuthor";
+
+                var auth = new SqlParameter("@author", SqlDbType.VarChar) { Value = author };
+                command.Parameters.Add(auth);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Book
+                    {
+                        IdBook = (int)reader["ID_book"],
+                        Title = (string)reader["Title"],
+                        Author = (string)reader["Author"],
+                        Genre = (string)reader["Genre"],
+                        Description = (string)reader["Description"],
+                        Compiler = (string)reader["Login"],
+                        DateAdd = ((DateTime)reader["Date_add"]).ToString(),
+                    };
+                }
+            }
         }
 
         public IEnumerable<Book> SearchBooksFromGenre(string genre)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "SearchBooksFromGenre";
+
+                var genr = new SqlParameter("@genre", SqlDbType.VarChar) { Value = genre };
+                command.Parameters.Add(genr);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Book
+                    {
+                        IdBook = (int)reader["ID_book"],
+                        Title = (string)reader["Title"],
+                        Author = (string)reader["Author"],
+                        Genre = (string)reader["Genre"],
+                        Description = (string)reader["Description"],
+                        Compiler = (string)reader["Login"],
+                        DateAdd = ((DateTime)reader["Date_add"]).ToString(),
+                    };
+                }
+            }
         }
 
         public IEnumerable<Book> SearchBooksFromTitle(string title)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "SearchBooksFromTitle";
+
+                var titl = new SqlParameter("@title", SqlDbType.VarChar) { Value = title };
+                command.Parameters.Add(titl);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Book
+                    {
+                        IdBook = (int)reader["ID_book"],
+                        Title = (string)reader["Title"],
+                        Author = (string)reader["Author"],
+                        Genre = (string)reader["Genre"],
+                        Description = (string)reader["Description"],
+                        Compiler = (string)reader["Login"],
+                        DateAdd = ((DateTime)reader["Date_add"]).ToString(),
+                    };
+                }
+            }
         }
 
         public void UpdateBook(int id, Book book)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateBookFromID";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(idBook);
+
+                var title = new SqlParameter("@title", SqlDbType.VarChar) { Value = book.Title };
+                command.Parameters.Add(title);
+                var author = new SqlParameter("@author", SqlDbType.VarChar) { Value = book.Author };
+                command.Parameters.Add(author);
+                var genre = new SqlParameter("@genre", SqlDbType.VarChar) { Value = book.Genre };
+                command.Parameters.Add(genre);
+                var description = new SqlParameter("@description", SqlDbType.VarChar) { Value = book.Description };
+                command.Parameters.Add(description);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void UpdateBook(string title, Book book)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateBookFromTitle";
+
+                var idBook = new SqlParameter("@oldTitle", SqlDbType.VarChar) { Value = title };
+                command.Parameters.Add(idBook);
+
+                var titl = new SqlParameter("@newTitle", SqlDbType.VarChar) { Value = book.Title };
+                command.Parameters.Add(titl);
+                var author = new SqlParameter("@author", SqlDbType.VarChar) { Value = book.Author };
+                command.Parameters.Add(author);
+                var genre = new SqlParameter("@genre", SqlDbType.VarChar) { Value = book.Genre };
+                command.Parameters.Add(genre);
+                var description = new SqlParameter("@description", SqlDbType.VarChar) { Value = book.Description };
+                command.Parameters.Add(description);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         #endregion

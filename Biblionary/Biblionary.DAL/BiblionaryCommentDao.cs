@@ -27,12 +27,53 @@ namespace Biblionary.DAL
 
         public void AddComment(Comment comment)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "AddComment";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) { Value = comment.Book };
+                command.Parameters.Add(idBook);
+                var user = new SqlParameter("@user", SqlDbType.VarChar) { Value = comment.User };
+                command.Parameters.Add(user);
+                var note = new SqlParameter("@note", SqlDbType.Float) { Value = comment.Note };
+                command.Parameters.Add(note);
+                var comm = new SqlParameter("@comment", SqlDbType.VarChar) { Value = comment.Text };
+                command.Parameters.Add(comm);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<Comment> ReadComments(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadComments";
+
+                var idBook = new SqlParameter("@book", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(idBook);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Comment
+                    {
+                        IdComment = (int)reader["ID_comment"],
+                        Book = (int)reader["Book"],
+                        User = (string)reader["Login"],
+                        Note = (float)reader["Note"],
+                        TimeAdd = ((DateTime)reader["TimeAdd"]).ToString(),
+                        Text = (string)reader["Comment"],
+                    };
+                }
+            }
         }
 
         #endregion

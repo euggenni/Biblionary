@@ -26,6 +26,7 @@ namespace Biblionary
                     DateAdd = (new DateTime(2018, 08, 08, 21, 22, 24)).ToString(),
                 }
                 );
+            //bookLogic.DeleteBook("Var-var-var");
 
             foreach (var book in bookLogic.ReadBooks())
             {

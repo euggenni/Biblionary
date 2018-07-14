@@ -27,32 +27,108 @@ namespace Biblionary.DAL
 
         public void AddGenre(Genre genre)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "AddGenre";
+
+                var name = new SqlParameter("@name", SqlDbType.VarChar) { Value = genre.Name };
+                command.Parameters.Add(name);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void DeleteGenre(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "DeleteGenreFromID";
+
+                var idGenre = new SqlParameter("@genre", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(idGenre);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void DeleteGenre(string name)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "DeleteGenreFromName";
+
+                var nam = new SqlParameter("@name", SqlDbType.VarChar) { Value = name };
+                command.Parameters.Add(nam);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<Genre> ReadGenres()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadGenres";
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Genre
+                    {
+                        IdGenre = (int)reader["ID_genre"],
+                        Name = (string)reader["Name"],
+                    };
+                }
+            }
         }
 
         public void UpdateGenre(int id, Genre genre)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateGenreFromID";
+
+                var genr = new SqlParameter("@genre", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(genr);
+                var name = new SqlParameter("@name", SqlDbType.VarChar) { Value = genre.Name };
+                command.Parameters.Add(name);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void UpdateGenre(string name, Genre genre)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateGenreFromName";
+
+                var oldName = new SqlParameter("@oldName", SqlDbType.VarChar) { Value = name };
+                command.Parameters.Add(oldName);
+                var newName = new SqlParameter("@newName", SqlDbType.VarChar) { Value = genre.Name };
+                command.Parameters.Add(newName);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         #endregion
