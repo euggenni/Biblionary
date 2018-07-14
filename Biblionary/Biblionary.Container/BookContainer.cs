@@ -10,7 +10,7 @@ using Biblionary.DAL.Interface;
 
 namespace Biblionary.Container
 {
-    public class BookContainer
+    public static class BookContainer
     {
         public static IBiblionaryBookDao BookDao = new BiblionaryBookDao();
 

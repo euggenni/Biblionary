@@ -27,42 +27,183 @@ namespace Biblionary.DAL
 
         public int Authorization(User user)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Authorization";
+
+                var login = new SqlParameter("@login", SqlDbType.VarChar) { Value = user.Login };
+                command.Parameters.Add(login);
+                var password = new SqlParameter("@password", SqlDbType.VarChar) { Value = user.Password };
+                command.Parameters.Add(password);
+
+                connection.Open();
+                return (int) (decimal) command.ExecuteScalar();
+            }
         }
 
         public User ReadUser(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadUserFromID";
+
+                var idUser = new SqlParameter("@id_user", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(idUser);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                reader.Read();
+                return new User
+                {
+                    IdUser = (int)reader["ID_user"],
+                    Login = (string)reader["Login"],
+                    Password = (string)reader["Password"],
+                    Type = (string)reader["Type"],
+                    DateReg = ((DateTime)reader["Date_reg"]).ToString(),
+                    CanComment = (bool)reader["Can_comment"],
+                    CanRead = (bool)reader["Can_read"],
+                };
+            }
         }
 
         public User ReadUser(string login)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadUserFromLogin";
+
+                var logi = new SqlParameter("@login", SqlDbType.VarChar) { Value = login };
+                command.Parameters.Add(logi);
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                reader.Read();
+                return new User
+                {
+                    IdUser = (int)reader["ID_user"],
+                    Login = (string)reader["Login"],
+                    Password = (string)reader["Password"],
+                    Type = (string)reader["Type"],
+                    DateReg = ((DateTime)reader["Date_reg"]).ToString(),
+                    CanComment = (bool)reader["Can_comment"],
+                    CanRead = (bool)reader["Can_read"],
+                };
+            }
         }
 
         public IEnumerable<User> ReadUsers()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadUsers";
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new User
+                    {
+                        IdUser = (int) reader["ID_user"],
+                        Login = (string) reader["Login"],
+                        Password = (string) reader["Password"],
+                        Type = (string) reader["Type"],
+                        DateReg = ((DateTime) reader["Date_reg"]).ToString(),
+                        CanComment = (bool) reader["Can_comment"],
+                        CanRead = (bool) reader["Can_read"],
+                    };
+                }
+            }
         }
 
         public void Registration(User user)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Registration";
+
+                var login = new SqlParameter("@login", SqlDbType.VarChar) { Value = user.Login };
+                command.Parameters.Add(login);
+                var password = new SqlParameter("@password", SqlDbType.VarChar) { Value = user.Password };
+                command.Parameters.Add(password);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void UpdatePassword(string login, string password)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdatePassword";
+
+                var logi = new SqlParameter("@login", SqlDbType.VarChar) { Value = login };
+                command.Parameters.Add(logi);
+                var pass = new SqlParameter("@password", SqlDbType.VarChar) { Value = password };
+                command.Parameters.Add(pass);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void UpdateRightsUser(int id, User user)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateRightsUserFromID";
+
+                var idUser = new SqlParameter("@user", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(idUser);
+                var type = new SqlParameter("@type", SqlDbType.VarChar) { Value = user.Type };
+                command.Parameters.Add(type);
+                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = user.CanComment};
+                command.Parameters.Add(canComment);
+                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = user.CanRead };
+                command.Parameters.Add(canRead);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void UpdateRightsUser(string login, User user)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "UpdateRightsUserFromLogin";
+
+                var logi = new SqlParameter("@login", SqlDbType.Int) { Value = login };
+                command.Parameters.Add(logi);
+                var type = new SqlParameter("@type", SqlDbType.VarChar) { Value = user.Type };
+                command.Parameters.Add(type);
+                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = user.CanComment };
+                command.Parameters.Add(canComment);
+                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = user.CanRead };
+                command.Parameters.Add(canRead);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         #endregion

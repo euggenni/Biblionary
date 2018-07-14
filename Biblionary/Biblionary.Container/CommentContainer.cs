@@ -10,7 +10,7 @@ using Biblionary.DAL.Interface;
 
 namespace Biblionary.Container
 {
-    class CommentContainer
+    public static class CommentContainer
     {
         public static IBiblionaryCommentDao CommentDao = new BiblionaryCommentDao();
 
