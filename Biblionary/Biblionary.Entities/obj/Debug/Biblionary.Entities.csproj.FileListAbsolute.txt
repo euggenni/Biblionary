@@ -1,0 +1,5 @@
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Entities\bin\Debug\Biblionary.Entities.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Entities\bin\Debug\Biblionary.Entities.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Entities\obj\Debug\Biblionary.Entities.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Entities\obj\Debug\Biblionary.Entities.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Entities\obj\Debug\Biblionary.Entities.pdb

@@ -1,0 +1,11 @@
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.BLL.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.BLL.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.BLL.Interface.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.DAL.Interface.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.Entities.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.BLL.Interface.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.DAL.Interface.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.Entities.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.pdb

@@ -42,14 +42,16 @@ namespace Biblionary.DAL
                 var description = new SqlParameter("@description", SqlDbType.VarChar) {Value = book.Description};
                 command.Parameters.Add(description);
                 var compiler = new SqlParameter("@compiler", SqlDbType.VarChar) {Value = book.Compiler};
+                command.Parameters.Add(compiler);
 
                 connection.Open();
+                command.ExecuteNonQuery();
             }
         }
 
         public void DeleteBook(int id)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void DeleteBook(string title)
@@ -69,7 +71,29 @@ namespace Biblionary.DAL
 
         public IEnumerable<Book> ReadBooks()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ReadBooks";
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Book
+                    {
+                        IdBook = (int) reader["ID_book"],
+                        Title = (string) reader["Title"],
+                        Author = (string) reader["Author"],
+                        Genre = (string) reader["Genre"],
+                        Description = (string) reader["Description"],
+                        Compiler = (string) reader["Login"],
+                        DateAdd = ((DateTime)reader["Date_add"]).ToString(),
+                    };
+                }
+            }
         }
 
         public IEnumerable<Book> SearchBooksFromAuthor(string author)
