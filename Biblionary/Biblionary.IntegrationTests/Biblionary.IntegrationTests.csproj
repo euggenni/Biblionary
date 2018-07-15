@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BookLogicTests.cs" />
+    <Compile Include="CommentLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

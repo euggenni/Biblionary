@@ -147,14 +147,16 @@ namespace Biblionary.IntegrationTests
                 Description = "Test description",
                 Compiler = "Avatar",
             };
-            logic.AddBook(newBook1);
-            logic.AddBook(newBook2);
+            var id1 = logic.AddBook(newBook1);
+            var id2 = logic.AddBook(newBook2);
             var Books1 = logic.SearchBooksFromAuthor("Super test author");
             var Books2 = logic.SearchBooksFromGenre("Novella");
             var Books3 = logic.SearchBooksFromTitle("Super test name");
             Assert.AreEqual(Books1.Count(), 2, "Books not read by author");
             Assert.AreEqual(Books2.Count(), 2, "Books not read by genre");
             Assert.AreEqual(Books3.Count(), 2, "Books not read by title");
+            logic.DeleteBook(id1);
+            logic.DeleteBook(id2);
         }
 
         [TestMethod]
@@ -163,7 +165,30 @@ namespace Biblionary.IntegrationTests
             //NinjectBook.Registration();
             var logic = NinjectBook.Kernel.Get<IBookLogic>();
 
-
+            var newBook = new Book()
+            {
+                Title = "Test name",
+                Author = "Test author",
+                Genre = "Roman",
+                Description = "Test description",
+                Compiler = "Avatar",
+            };
+            var id = logic.AddBook(newBook);
+            var newBook2 = new Book()
+            {
+                Title = "Test name2",
+                Author = "Test author2",
+                Genre = "Novella",
+                Description = "Test description2",
+                Compiler = "Avatar",
+            };
+            logic.UpdateBook(id, newBook2);
+            var updatedBook = logic.ReadBookFromid(id);
+            Assert.AreEqual(newBook2.Title, updatedBook.Title, "Not updated title");
+            Assert.AreEqual(newBook2.Author, updatedBook.Author, "Not updated author");
+            Assert.AreEqual(newBook2.Genre, updatedBook.Genre, "Not updated genre");
+            Assert.AreEqual(newBook2.Description, updatedBook.Description, "Not updated description");
+            logic.DeleteBook(id);
         }
     }
 }
