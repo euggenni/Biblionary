@@ -40,7 +40,7 @@ namespace Biblionary.BLL
             _bookDao.DeleteBook(title);
         }
 
-        public float GetAvgNote(int id)
+        public int GetAvgNote(int id)
         {
             return _bookDao.GetAvgNote(id);
         }

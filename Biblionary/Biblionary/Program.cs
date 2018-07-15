@@ -43,8 +43,20 @@ namespace Biblionary
                     DateAdd = (new DateTime(2018, 08, 08, 21, 22, 24)).ToString(),
                 }
             );
-            bookLogic.DeleteBook("Var-var-var");
+            //bookLogic.DeleteBook("Var-var-var");
+            ///////
+            var newBook = new Book()
+            {
+                Title = "Test name",
+                Author = "Test author",
+                Genre = "Roman",
+                Description = "Test description",
+                Compiler = "Avatar",
+            };
 
+            var ida = bookLogic.AddBook(newBook);
+            var Book = bookLogic.ReadBookFromid(ida);
+            /// 
             foreach (var book in bookLogic.ReadBooks())
             {
                 Console.WriteLine(book.IdBook + " " + book.Title + " " + book.Author + " " + book.Genre + " " + book.Description + " " + book.Compiler + " " + book.DateAdd);

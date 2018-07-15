@@ -15,7 +15,7 @@ namespace Biblionary.BLL.Interface
 
         void DeleteBook(string title);
 
-        float GetAvgNote(int id);
+        int GetAvgNote(int id);
 
         Book ReadBookFromid(int id);
 

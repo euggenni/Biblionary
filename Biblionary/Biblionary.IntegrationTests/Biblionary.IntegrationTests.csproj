@@ -61,9 +61,9 @@
       <Project>{8b590d3d-de6b-477a-8193-7abf9200c72a}</Project>
       <Name>Biblionary.BLL.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Biblionary.DAL.Interface\Biblionary.DAL.Interface.csproj">
-      <Project>{98d2ee86-425d-463f-8208-b71f88c53891}</Project>
-      <Name>Biblionary.DAL.Interface</Name>
+    <ProjectReference Include="..\Biblionary.Container\Biblionary.Container.csproj">
+      <Project>{34f2611b-8185-457f-aa2f-740ec40df481}</Project>
+      <Name>Biblionary.Container</Name>
     </ProjectReference>
     <ProjectReference Include="..\Biblionary.Entities\Biblionary.Entities.csproj">
       <Project>{7780241c-6ddf-4c51-ab92-4b67fea770d3}</Project>
@@ -79,6 +79,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

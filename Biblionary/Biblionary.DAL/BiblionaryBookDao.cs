@@ -105,7 +105,7 @@ namespace Biblionary.DAL
             }
         }
 
-        public float GetAvgNote(int id)
+        public int GetAvgNote(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -119,7 +119,7 @@ namespace Biblionary.DAL
                 command.Parameters.Add(idBook);
 
                 connection.Open();
-                return (float)command.ExecuteScalar();
+                return (int)(decimal)command.ExecuteScalar();
                 }
                 finally
                 {
@@ -145,17 +145,23 @@ namespace Biblionary.DAL
                 connection.Open();
 
                 var reader = command.ExecuteReader();
-                reader.Read();
-                return new Book
-                {
-                    IdBook = (int) reader["ID_book"],
-                    Title = (string) reader["Title"],
-                    Author = (string) reader["Author"],
-                    Genre = (string) reader["Genre"],
-                    Description = (string) reader["Description"],
-                    Compiler = (string) reader["Login"],
-                    DateAdd = ((DateTime) reader["Date_add"]).ToString(),
-                };
+                    if (reader.Read())
+                    {
+                        return new Book()
+                        {
+                            IdBook = (int) reader["ID_book"],
+                            Title = (string) reader["Title"],
+                            Author = (string) reader["Author"],
+                            Genre = (string) reader["Genre"],
+                            Description = (string) reader["Description"],
+                            Compiler = (string) reader["Login"],
+                            DateAdd = ((DateTime) reader["Date_add"]).ToString(),
+                        };
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 finally
                 {

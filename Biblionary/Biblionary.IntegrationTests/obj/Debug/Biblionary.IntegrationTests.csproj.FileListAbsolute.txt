@@ -21,3 +21,6 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bi
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\obj\Debug\Biblionary.IntegrationTests.csprojResolveAssemblyReference.cache
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\obj\Debug\Biblionary.IntegrationTests.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\obj\Debug\Biblionary.IntegrationTests.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.Container.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.Container.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.IntegrationTests.dll.config
