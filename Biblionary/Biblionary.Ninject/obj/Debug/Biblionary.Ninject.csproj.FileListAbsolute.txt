@@ -15,3 +15,5 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\B
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.csprojResolveAssemblyReference.cache
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\obj\Debug\Biblionary.Ninject.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\log4net.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Ninject\bin\Debug\log4net.xml

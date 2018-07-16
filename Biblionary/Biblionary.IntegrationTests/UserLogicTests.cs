@@ -114,21 +114,19 @@ namespace Biblionary.IntegrationTests
             };
             var idUser = logic.Registration(newUser);
             newUser.Type = "Administrator";
-            newUser.CanComment = false;
-            newUser.CanRead = false;
+            //newUser.CanComment = false;
+            //newUser.CanRead = false;
+            newUser.Rights = (byte) (User.UserRole.None);
             logic.UpdateRightsUser(idUser, newUser);
             var PuperUser = logic.ReadUser(idUser);
             Assert.AreEqual(newUser.Type, PuperUser.Type, "Type user not updated by id");
-            Assert.AreEqual(newUser.CanComment, PuperUser.CanComment, "Right comment user not updated by id");
-            Assert.AreEqual(newUser.CanRead, PuperUser.CanRead, "Right read user not updated by id");
+            Assert.AreEqual(newUser.Rights, PuperUser.Rights, "Rights user not updated by id");
             newUser.Type = "Moderator";
-            newUser.CanComment = true;
-            newUser.CanRead = true;
+            newUser.Rights = (byte)(User.UserRole.CanComment | User.UserRole.CanRead);
             logic.UpdateRightsUser(newUser.Login, newUser);
             PuperUser = logic.ReadUser(idUser);
             Assert.AreEqual(newUser.Type, PuperUser.Type, "Type user not updated by login");
-            Assert.AreEqual(newUser.CanComment, PuperUser.CanComment, "Right comment user not updated by login");
-            Assert.AreEqual(newUser.CanRead, PuperUser.CanRead, "Right read user not updated by login");
+            Assert.AreEqual(newUser.Rights, PuperUser.Rights, "Rights user not updated by login");
         }
     }
 }

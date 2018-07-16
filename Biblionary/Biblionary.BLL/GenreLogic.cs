@@ -25,32 +25,76 @@ namespace Biblionary.BLL
 
         public int AddGenre(Genre genre)
         {
-            return _genreDao.AddGenre(genre);
+            try
+            {
+                return _genreDao.AddGenre(genre);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return 0;
+            }
         }
 
         public void DeleteGenre(int id)
         {
-            _genreDao.DeleteGenre(id);
+            try
+            {
+                _genreDao.DeleteGenre(id);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         public void DeleteGenre(string name)
         {
-            _genreDao.DeleteGenre(name);
+            try
+            {
+                _genreDao.DeleteGenre(name);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         public IEnumerable<Genre> ReadGenres()
         {
-            return _genreDao.ReadGenres();
+            try
+            {
+                return _genreDao.ReadGenres();
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return null;
+            }
         }
 
         public void UpdateGenre(int id, Genre genre)
         {
-            _genreDao.UpdateGenre(id, genre);
+            try
+            {
+                _genreDao.UpdateGenre(id, genre);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         public void UpdateGenre(string name, Genre genre)
         {
-            _genreDao.UpdateGenre(name, genre);
+            try
+            {
+                _genreDao.UpdateGenre(name, genre);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         #endregion

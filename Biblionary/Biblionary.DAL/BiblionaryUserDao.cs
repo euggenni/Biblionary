@@ -76,8 +76,9 @@ namespace Biblionary.DAL
                             Password = (string) reader["Password"],
                             Type = (string) reader["Type"],
                             DateReg = ((DateTime) reader["Date_reg"]).ToString(),
-                            CanComment = (bool) reader["Can_comment"],
-                            CanRead = (bool) reader["Can_read"],
+                            Rights = (byte)((User.UserRole.CanComment & (User.UserRole) reader["Can_comment"]) | (User.UserRole.CanRead & (User.UserRole)reader["Can_read"])),
+                            //CanComment = (bool) reader["Can_comment"],
+                            //CanRead = (bool) reader["Can_read"],
                         };
                     }
                     else return null;
@@ -114,8 +115,9 @@ namespace Biblionary.DAL
                     Password = (string)reader["Password"],
                     Type = (string)reader["Type"],
                     DateReg = ((DateTime)reader["Date_reg"]).ToString(),
-                    CanComment = (bool)reader["Can_comment"],
-                    CanRead = (bool)reader["Can_read"],
+                    Rights = (byte)((User.UserRole.CanComment & (User.UserRole)reader["Can_comment"]) | (User.UserRole.CanRead & (User.UserRole)reader["Can_read"])),
+                    //CanComment = (bool)reader["Can_comment"],
+                    //CanRead = (bool)reader["Can_read"],
                 };
                 }
                 finally
@@ -148,8 +150,9 @@ namespace Biblionary.DAL
                         Password = (string) reader["Password"],
                         Type = (string) reader["Type"],
                         DateReg = ((DateTime) reader["Date_reg"]).ToString(),
-                        CanComment = (bool) reader["Can_comment"],
-                        CanRead = (bool) reader["Can_read"],
+                        Rights = (byte)((User.UserRole.CanComment & (User.UserRole)reader["Can_comment"]) | (User.UserRole.CanRead & (User.UserRole)reader["Can_read"])),
+                        //CanComment = (bool) reader["Can_comment"],
+                        //CanRead = (bool) reader["Can_read"],
                     };
                 }
                 }
@@ -227,9 +230,9 @@ namespace Biblionary.DAL
                 command.Parameters.Add(idUser);
                 var type = new SqlParameter("@type", SqlDbType.VarChar) { Value = user.Type };
                 command.Parameters.Add(type);
-                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = user.CanComment};
+                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = /*user.CanComment*/(User.UserRole)user.Rights == User.UserRole.CanComment};
                 command.Parameters.Add(canComment);
-                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = user.CanRead };
+                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = /*user.CanRead*/(User.UserRole)user.Rights == User.UserRole.CanRead };
                 command.Parameters.Add(canRead);
 
                 connection.Open();
@@ -257,9 +260,9 @@ namespace Biblionary.DAL
                 command.Parameters.Add(logi);
                 var type = new SqlParameter("@type", SqlDbType.VarChar) { Value = user.Type };
                 command.Parameters.Add(type);
-                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = user.CanComment };
+                var canComment = new SqlParameter("@can_comment", SqlDbType.Bit) { Value = /*user.CanComment*/(User.UserRole)user.Rights == User.UserRole.CanComment };
                 command.Parameters.Add(canComment);
-                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = user.CanRead };
+                var canRead = new SqlParameter("@can_read", SqlDbType.Bit) { Value = /*user.CanRead*/(User.UserRole)user.Rights == User.UserRole.CanRead };
                 command.Parameters.Add(canRead);
 
                 connection.Open();

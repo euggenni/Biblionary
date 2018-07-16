@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Biblionary.BLL;
 using Biblionary.BLL.Interface;
 using Biblionary.Container;
 using Biblionary.Ninject;
@@ -16,6 +17,7 @@ namespace Biblionary
         static void Main(string[] args)
         {
             NinjectBook.Registration();
+            LogBLL.InitLogger();
 
             var bookLogic = NinjectBook.Kernel.Get<IBookLogic>();
 

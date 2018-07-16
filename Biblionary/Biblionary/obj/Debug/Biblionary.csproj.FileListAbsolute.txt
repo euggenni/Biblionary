@@ -23,3 +23,5 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionar
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Ninject.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Biblionary.Ninject.pdb
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\Ninject.xml
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\log4net.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary\bin\Debug\log4net.xml

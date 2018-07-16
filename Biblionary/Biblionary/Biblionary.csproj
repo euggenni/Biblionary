@@ -122,6 +122,10 @@
       <Project>{8b590d3d-de6b-477a-8193-7abf9200c72a}</Project>
       <Name>Biblionary.BLL.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Biblionary.BLL\Biblionary.BLL.csproj">
+      <Project>{CE378A0A-B963-4C61-915D-C50A108472BB}</Project>
+      <Name>Biblionary.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Biblionary.Container\Biblionary.Container.csproj">
       <Project>{34f2611b-8185-457f-aa2f-740ec40df481}</Project>
       <Name>Biblionary.Container</Name>

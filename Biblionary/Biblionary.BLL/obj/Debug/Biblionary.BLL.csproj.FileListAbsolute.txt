@@ -9,3 +9,6 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Bibli
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.csprojResolveAssemblyReference.cache
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\obj\Debug\Biblionary.BLL.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\Biblionary.BLL.dll.config
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\log4net.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.BLL\bin\Debug\log4net.xml

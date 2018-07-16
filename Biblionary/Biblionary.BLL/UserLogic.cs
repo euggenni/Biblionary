@@ -25,42 +25,103 @@ namespace Biblionary.BLL
 
         public int Authorization(User user)
         {
-            return _userDao.Authorization(user);
+            try
+            {
+                return _userDao.Authorization(user);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return 0;
+            }
         }
 
         public User ReadUser(int id)
         {
-            return _userDao.ReadUser(id);
+            try
+            {
+                return _userDao.ReadUser(id);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return new User();
+            }
         }
 
         public User ReadUser(string login)
         {
-            return _userDao.ReadUser(login);
+            try
+            {
+                return _userDao.ReadUser(login);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return new User();
+            }
         }
 
         public IEnumerable<User> ReadUsers()
         {
-            return _userDao.ReadUsers();
+            try
+            {
+                return _userDao.ReadUsers();
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return null;
+            }
         }
 
         public int Registration(User user)
         {
-            return _userDao.Registration(user);
+            try
+            {
+                return _userDao.Registration(user);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return 0;
+            }
         }
 
         public void UpdatePassword(string login, string password)
         {
-            _userDao.UpdatePassword(login, password);
+            try
+            {
+                _userDao.UpdatePassword(login, password);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         public void UpdateRightsUser(int id, User user)
         {
-            _userDao.UpdateRightsUser(id, user);
+            try
+            {
+                _userDao.UpdateRightsUser(id, user);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         public void UpdateRightsUser(string login, User user)
         {
-            _userDao.UpdateRightsUser(login, user);
+            try
+            {
+                _userDao.UpdateRightsUser(login, user);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+            }
         }
 
         #endregion

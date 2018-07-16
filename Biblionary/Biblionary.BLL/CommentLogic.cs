@@ -26,12 +26,28 @@ namespace Biblionary.BLL
 
         public int AddComment(Comment comment)
         {
-            return _commentDao.AddComment(comment);
+            try
+            {
+                return _commentDao.AddComment(comment);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return 0;
+            }
         }
 
         public IEnumerable<Comment> ReadComments(int id)
         {
-            return _commentDao.ReadComments(id);
+            try
+            {
+                return _commentDao.ReadComments(id);
+            }
+            catch (Exception ex)
+            {
+                LogBLL.Log.Error(ex.Message);
+                return null;
+            }
         }
 
         #endregion

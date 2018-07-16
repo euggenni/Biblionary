@@ -13,3 +13,5 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\bin\Debug
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\obj\Debug\Biblionary.Container.csprojResolveAssemblyReference.cache
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\obj\Debug\Biblionary.Container.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\obj\Debug\Biblionary.Container.pdb
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\bin\Debug\log4net.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.Container\bin\Debug\log4net.xml

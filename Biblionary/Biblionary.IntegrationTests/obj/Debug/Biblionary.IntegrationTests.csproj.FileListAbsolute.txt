@@ -24,3 +24,5 @@ C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\ob
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.Container.dll
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.Container.pdb
 C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\Biblionary.IntegrationTests.dll.config
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\log4net.dll
+C:\Users\1\Documents\GitHub\Biblionary\Biblionary\Biblionary.IntegrationTests\bin\Debug\log4net.xml

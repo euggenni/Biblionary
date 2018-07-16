@@ -13,7 +13,15 @@ namespace Biblionary.Entities
         public string Password { get; set; }
         public string Type { get; set; }
         public string DateReg { get; set; }
-        public bool CanComment { get; set; }
-        public bool CanRead { get; set; }
+        //public bool CanComment { get; set; }
+        //public bool CanRead { get; set; }
+        public byte Rights { get; set; }
+        [FlagsAttribute]
+        public enum UserRole
+        {
+            None = 0,
+            CanComment = 1,
+            CanRead = 2,
+        }
     }
 }
