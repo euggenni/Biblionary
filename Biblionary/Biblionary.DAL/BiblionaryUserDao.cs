@@ -41,7 +41,7 @@ namespace Biblionary.DAL
                     command.Parameters.Add(password);
 
                     connection.Open();
-                    return (int) (decimal) command.ExecuteScalar();
+                    return (int)(decimal)command.ExecuteScalar();
                 }
                 finally
                 {
@@ -67,17 +67,20 @@ namespace Biblionary.DAL
                 connection.Open();
 
                 var reader = command.ExecuteReader();
-                reader.Read();
-                return new User
-                {
-                    IdUser = (int)reader["ID_user"],
-                    Login = (string)reader["Login"],
-                    Password = (string)reader["Password"],
-                    Type = (string)reader["Type"],
-                    DateReg = ((DateTime)reader["Date_reg"]).ToString(),
-                    CanComment = (bool)reader["Can_comment"],
-                    CanRead = (bool)reader["Can_read"],
-                };
+                    if (reader.Read())
+                    {
+                        return new User
+                        {
+                            IdUser = (int) reader["ID_user"],
+                            Login = (string) reader["Login"],
+                            Password = (string) reader["Password"],
+                            Type = (string) reader["Type"],
+                            DateReg = ((DateTime) reader["Date_reg"]).ToString(),
+                            CanComment = (bool) reader["Can_comment"],
+                            CanRead = (bool) reader["Can_read"],
+                        };
+                    }
+                    else return null;
                 }
                 finally
                 {

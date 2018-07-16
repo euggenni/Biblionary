@@ -20,7 +20,15 @@ namespace Biblionary.IntegrationTests
             NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
+            var Authorization = new User()
+            {
+                Login = "Avatar",
+                Password = "1111",
+            };
+            var idUser = logic.Authorization(Authorization);
+            var User = logic.ReadUser(idUser);
 
+            Assert.IsNotNull(User, "Failed authorization");
         }
 
         [TestMethod]
@@ -29,7 +37,16 @@ namespace Biblionary.IntegrationTests
             //NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
-
+            var newUser = new User()
+            {
+                Login = "Testor User",
+                Password = "Testsss",
+            };
+            var idUser = logic.Registration(newUser);
+            var user = logic.ReadUser(idUser);
+            Assert.AreEqual(newUser.Password, user.Password, "User not readed by id");
+            user = logic.ReadUser(newUser.Login);
+            Assert.AreEqual(newUser.Password, user.Password, "User not readed by login");
         }
 
         [TestMethod]
@@ -38,7 +55,16 @@ namespace Biblionary.IntegrationTests
             //NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
+            var newUser = new User()
+            {
+                Login = "Testorator User",
+                Password = "Testsss",
+            };
 
+            var idUser = logic.Registration(newUser);
+            var Users = logic.ReadUsers();
+            var User = logic.ReadUser(idUser);
+            Assert.IsTrue(Users.Contains(User), "Users not readed");
         }
 
         [TestMethod]
@@ -47,7 +73,14 @@ namespace Biblionary.IntegrationTests
             //NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
-
+            var newUser = new User()
+            {
+                Login = "Test User",
+                Password = "Testsss",
+            };
+            var idUser = logic.Registration(newUser);
+            var User = logic.ReadUser(idUser);
+            Assert.IsNotNull(User, "User not registred");
         }
 
         [TestMethod]
@@ -56,7 +89,16 @@ namespace Biblionary.IntegrationTests
             //NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
-
+            var newUser = new User()
+            {
+                Login = "Test User",
+                Password = "Testsss",
+            };
+            var idUser = logic.Registration(newUser);
+            newUser.Password = "top secret";
+            logic.UpdatePassword(newUser.Login, newUser.Password);
+            var updatedUser = logic.ReadUser(idUser);
+            Assert.AreEqual(newUser.Password, updatedUser.Password, "Password not updated");
         }
 
         [TestMethod]
@@ -65,7 +107,28 @@ namespace Biblionary.IntegrationTests
             //NinjectUser.Registration();
             var logic = NinjectUser.Kernel.Get<IUserLogic>();
 
-
+            var newUser = new User()
+            {
+                Login = "Super test User",
+                Password = "Test",
+            };
+            var idUser = logic.Registration(newUser);
+            newUser.Type = "Administrator";
+            newUser.CanComment = false;
+            newUser.CanRead = false;
+            logic.UpdateRightsUser(idUser, newUser);
+            var PuperUser = logic.ReadUser(idUser);
+            Assert.AreEqual(newUser.Type, PuperUser.Type, "Type user not updated by id");
+            Assert.AreEqual(newUser.CanComment, PuperUser.CanComment, "Right comment user not updated by id");
+            Assert.AreEqual(newUser.CanRead, PuperUser.CanRead, "Right read user not updated by id");
+            newUser.Type = "Moderator";
+            newUser.CanComment = true;
+            newUser.CanRead = true;
+            logic.UpdateRightsUser(newUser.Login, newUser);
+            PuperUser = logic.ReadUser(idUser);
+            Assert.AreEqual(newUser.Type, PuperUser.Type, "Type user not updated by login");
+            Assert.AreEqual(newUser.CanComment, PuperUser.CanComment, "Right comment user not updated by login");
+            Assert.AreEqual(newUser.CanRead, PuperUser.CanRead, "Right read user not updated by login");
         }
     }
 }
