@@ -55,7 +55,9 @@
   <ItemGroup>
     <Compile Include="BookLogicTests.cs" />
     <Compile Include="CommentLogicTests.cs" />
+    <Compile Include="GenreLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Biblionary.BLL.Interface\Biblionary.BLL.Interface.csproj">

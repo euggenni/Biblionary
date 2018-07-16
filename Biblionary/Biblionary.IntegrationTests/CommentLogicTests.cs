@@ -30,19 +30,19 @@ namespace Biblionary.IntegrationTests
                 Description = "Test description",
                 Compiler = "Avatar",
             };
-            //var idBook = logicBook.AddBook(newBook);
+            var idBook = logicBook.AddBook(newBook);
 
-            //var newComment = new Comment()
-            //{
-            //    Book = idBook,
-            //    User = "Avatar",
-            //    Note = (float)7,
-            //    Text = "Bla-bla-bla-bla",
-            //};
-            //logicComment.AddComment(newComment);
-            //var allComments = logicComment.ReadComments(idBook);
-            //Assert.AreEqual(allComments.Count(), 1, "Comment not added");
-            //logicBook.DeleteBook(idBook);
+            var newComment = new Comment()
+            {
+                Book = idBook,
+                User = "Avatar",
+                Note = (float)7,
+                Text = "Bla-bla-bla-bla",
+            };
+            logicComment.AddComment(newComment);
+            var allComments = logicComment.ReadComments(idBook);
+            Assert.AreEqual(allComments.Count(), 1, "Comment not added");
+            logicBook.DeleteBook(idBook);
         }
 
         [TestMethod]
